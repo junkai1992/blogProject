@@ -1,0 +1,11 @@
+server:
+  port: 8888
+datasource:
+  driverName: mysql
+  host: 111.231.134.26
+  port: 3306
+  database: db1
+  username: root
+  password: 123
+  charset: utf8
+  loc: Asia/Shanghai
