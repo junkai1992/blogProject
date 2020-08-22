@@ -4,7 +4,7 @@ datasource:
   driverName: mysql
   host: 111.231.134.26
   port: 3306
-  database: db1
+  database: blog
   username: root
   password: 123
   charset: utf8

@@ -6,14 +6,15 @@ import (
 	"net/url"
 
 	//_ "github.com/go-sql-driver/mysql"
+	"blogBack/model"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
-	"junkai/ginEssential/model"
 )
+
 var DB *gorm.DB
 
 // 开启数据库连接池
-func InitDB() *gorm.DB{
+func InitDB() *gorm.DB {
 	// 初始化mysql配置
 	driverName := viper.GetString("datasource.driverName")
 	host := viper.GetString("datasource.host")
@@ -34,7 +35,7 @@ func InitDB() *gorm.DB{
 		url.QueryEscape(loc))
 	// 连接mysql
 	db, err := gorm.Open(driverName, args)
-	if err != nil{
+	if err != nil {
 		panic("failed connect db... err:" + err.Error())
 	}
 	// 自动创建(migrate)数据表user
