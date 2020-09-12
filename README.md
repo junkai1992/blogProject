@@ -19,5 +19,19 @@
 
 ## 3.图示
 
+- 文章页：
 
+![文章页](https://images.cnblogs.com/cnblogs_com/xujunkai/1846258/o_200912090143%E6%96%87%E7%AB%A0%E9%A1%B5.png)
+
+- 上传文章
+
+![上传文章](https://images.cnblogs.com/cnblogs_com/xujunkai/1846258/o_200912090134%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0.png)
+
+- 归档
+
+![归档](https://images.cnblogs.com/cnblogs_com/xujunkai/1846258/o_200912090041%E5%BD%92%E6%A1%A3.png)
+
+- 文章展示
+
+![文章展示](https://images.cnblogs.com/cnblogs_com/xujunkai/1846258/o_200912090152%E6%96%87%E7%AB%A0%E5%B1%95%E7%A4%BA.png)
 
