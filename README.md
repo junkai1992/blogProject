@@ -20,21 +20,21 @@
 ## 3.图示
 
 - 文章页：
-
-![文章页](https://images.cnblogs.com/cnblogs_com/xujunkai/1846258/o_200912090143%E6%96%87%E7%AB%A0%E9%A1%B5.png)
+![](https://img2020.cnblogs.com/blog/1644171/202009/1644171-20200912181853676-686338662.png)
 
 - 上传文章
-
-![上传文章](https://images.cnblogs.com/cnblogs_com/xujunkai/1846258/o_200912090134%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0.png)
+![](https://img2020.cnblogs.com/blog/1644171/202009/1644171-20200912181841124-1183044057.png)
 
 - 归档
-
-![归档](https://images.cnblogs.com/cnblogs_com/xujunkai/1846258/o_200912090041%E5%BD%92%E6%A1%A3.png)
+![](https://img2020.cnblogs.com/blog/1644171/202009/1644171-20200912181824526-1156233961.png)
 
 - 文章展示
-
-![文章展示](https://images.cnblogs.com/cnblogs_com/xujunkai/1846258/o_200912090152%E6%96%87%E7%AB%A0%E5%B1%95%E7%A4%BA.png)
-
+![](https://img2020.cnblogs.com/blog/1644171/202009/1644171-20200912181812301-1230233341.png)
 
 
-![sd](https://img2020.cnblogs.com/blog/1644171/202006/1644171-20200605004006190-234582862.png)
+
+
+
+
+
+
