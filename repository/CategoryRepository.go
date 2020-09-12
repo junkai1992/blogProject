@@ -52,3 +52,11 @@ func (c CategoryRepository) DeleteById(id int) error {
 	}
 	return nil
 }
+
+func (c CategoryRepository) SelectByLists() ([]model.Category, error) {
+	var categorys []model.Category
+	if err := c.DB.Find(&categorys).Error; err != nil {
+		return nil, err
+	}
+	return categorys, nil
+}

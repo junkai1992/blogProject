@@ -1,11 +1,24 @@
 server:
   port: 8888
+  host: 127.0.0.1
 datasource:
   driverName: mysql
   host: 111.231.134.26
   port: 3306
   database: blog
-  username: root
-  password: 123
+  username: test
+  password: 123456
   charset: utf8
   loc: Asia/Shanghai
+imgespath:
+  titlepath: static/titlePost/
+  contentpath: static/contentPost/
+redissource:
+  host: 111.231.134.26
+  port: 6379
+loggersource:
+  level: info
+  filename: ./log/log.txt
+  maxsize: 128
+  maxage: 7
+  maxbackups: 30

@@ -1,14 +1,11 @@
 package common
 
 import (
-	//_ "database/sql"
-	"fmt"
-	"net/url"
-
-	//_ "github.com/go-sql-driver/mysql"
 	"blogBack/model"
+	"fmt"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
+	"net/url"
 )
 
 var DB *gorm.DB

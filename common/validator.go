@@ -12,9 +12,10 @@ import (
 	"reflect"
 	"strings"
 )
+
 var Trans ut.Translator
 
-func InitTrans (locale string) (err error){
+func InitTrans(locale string) (err error) {
 	// 修改gin框架中Validator引擎属性，自定义方式
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
 		// 注册一个获取json tag的自定义方法
@@ -36,27 +37,27 @@ func InitTrans (locale string) (err error){
 			return fmt.Errorf("uni.GetTranslator(%s) failed", locale)
 		}
 		// 翻译器注册
-		switch locale{
+		switch locale {
 		case "en":
 			err = enTranslations.RegisterDefaultTranslations(v, Trans)
 		case "zh":
 			err = zhTranslations.RegisterDefaultTranslations(v, Trans)
 		default:
-			err  = enTranslations.RegisterDefaultTranslations(v, Trans)
+			err = enTranslations.RegisterDefaultTranslations(v, Trans)
 		}
 		return
 	}
 	return
 }
+
 // 用于去掉结构体前缀名称
 func RemoveTopStruct(fields map[string]string) map[string]string {
 	res := map[string]string{}
 	for field, err := range fields {
-		res[field[strings.Index(field, ".")+1:]] = err
+		res[field[strings.LastIndex(field, ".")+1:]] = err
 	}
 	return res
 }
-
 
 func GetVal() ut.Translator {
 	// 返回模型对象实例，用于视图函数使用CURD

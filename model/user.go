@@ -2,6 +2,7 @@ package model
 
 import "github.com/jinzhu/gorm"
 
+// 用户表
 type User struct {
 	gorm.Model
 	Name      string `json:"name" gorm:"type:varchar(20);not null"`

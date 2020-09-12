@@ -53,11 +53,13 @@ func Login(ctx *gin.Context) {
 		log.Printf("token generate error : %v", err)
 		return
 	}
-	ctx.JSON(200, gin.H{
-		"code": 200,
-		"msg":  "登陆成功",
-		"data": gin.H{"token": token},
-	})
+
+	response.Success(ctx, gin.H{"token": token, "user": user.Name, "user_id": user.ID}, "登陆成功")
+	//ctx.JSON(200, gin.H{
+	//	"code": 200,
+	//	"msg":  "登陆成功",
+	//	"result": gin.H{"token": token},
+	//})
 }
 
 type registerUser struct {
@@ -108,12 +110,6 @@ func Register(ctx *gin.Context) {
 	if len(name) == 0 {
 		name = utils.RandomString(10)
 	}
-	//var user model.User
-	//DB.Where("email = ?", email).First(&user)
-	//if user.ID != 0 {
-	//	response.Response(ctx, http.StatusUnprocessableEntity, 422, nil, "当前邮箱已经绑定了")
-	//	return
-	//}
 	telephone := requestUser.Telephone
 	if isTelephoneExist(DB, telephone) {
 		response.Response(ctx, http.StatusUnprocessableEntity, 422, nil, "当前当前手机号已经绑定")

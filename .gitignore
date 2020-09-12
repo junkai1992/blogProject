@@ -1,0 +1,13 @@
+# config
+*.yml
+# log
+*.txt
+# img
+*.png
+*.jpg
+*.jepg
+
+static
+
+*.css
+*.js

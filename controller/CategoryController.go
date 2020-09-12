@@ -6,7 +6,6 @@ import (
 	"blogBack/repository"
 	"blogBack/response"
 	"blogBack/validatorData"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/jinzhu/gorm"
@@ -120,9 +119,19 @@ func (c CategoryController) Update(ctx *gin.Context) {
 }
 
 func (c CategoryController) Show(ctx *gin.Context) {
-	categoryId, err := strconv.Atoi(ctx.Params.ByName("id"))
+	query := ctx.Params.ByName("query")
+	if query == "lists" {
+		categorys, err := c.Repository.SelectByLists()
+		if err != nil {
+			response.Fail(ctx, "分类不存在", nil)
+			return
+		}
+		response.Success(ctx, gin.H{"categorys": categorys}, "获取分类数据成功")
+		return
+	}
+	categoryId, err := strconv.Atoi(query)
 	if err != nil {
-		fmt.Println(err)
+		response.Response(ctx, http.StatusBadRequest, 400, nil, "请求参数错误")
 		return
 	}
 	category, err := c.Repository.SelectById(categoryId)
