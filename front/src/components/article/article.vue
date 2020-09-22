@@ -80,7 +80,7 @@ h1, h2, h3, h4 {
   min-height: 40rem;
 }
 img {
-  width: 49rem;
+  width: 100%;
 }
 h1, h2, h3, h4, h5 {
   font-family: Georgia, Palatino, serif;
@@ -171,7 +171,7 @@ pre {
   padding: 6px 10px;
   border-left: 5px solid #6CE26C;
   background: #cacaca;
-  width: 49rem;
+  width: auto;
 }
 
 pre > code {
@@ -486,8 +486,7 @@ table tr:last-child td:last-child {
   border-radius: 0 0 6px 0;
 }
 .passage {
-  padding-left: 4rem;
-  width: 59rem;
+  padding: 10px;
 }
 .article-title {
   margin: 0;

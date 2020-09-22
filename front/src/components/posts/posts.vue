@@ -1,14 +1,14 @@
 <template>
   <Content :style="{ background: '#fff', minHeight: '70rem', padding: '1rem'}">
-    <div style="padding: 2rem">
+    <div style="padding: 1rem">
       <List item-layout="vertical" v-if="this.article_list">
         <ListItem v-for="item in article_list" :key="item.title">
-          <div style="position: flex;margin-left: 20rem">
+          <span style="float:right;">
             <Tag color="purple">
               <Icon type="ios-book"></Icon>
               <span>{{item.Category.name}}</span>
             </Tag>
-          </div>
+          </span>
           <ListItemMeta :avatar="item.avatar" :title="item.title" :description="item.preface" />
           创建时间:{{ item.created_at }}
           <template slot="action">
@@ -29,7 +29,7 @@
       </List>
       <List v-else>
         <ListItem>
-            <div>文章消失在遥远的🌕</div>
+          <div>文章消失在遥远的🌕</div>
         </ListItem>
       </List>
     </div>
@@ -123,19 +123,22 @@ export default {
 </script>
 
 <style scoped>
-  .pageHandle {
-    width: 100%;
-    min-height: 8rem;
-    display: flex;
-    justify-content: center;
-  }
-  .ivu-page-options-elevator >>> input {
-    width: 2rem;
-  }
-  .zanHandle {
-    color: orange;
-  }
-  .nozanHandle {
-    color: #797979;
-  }
+.pageHandle {
+  width: 100%;
+  min-height: 8rem;
+  display: flex;
+  justify-content: center;
+}
+.ivu-page-options-elevator >>> input {
+  width: 2rem;
+}
+.ivu-list-item-main >>> .ivu-list-item-meta{
+  min-height: 5rem;
+}
+.zanHandle {
+  color: orange;
+}
+.nozanHandle {
+  color: #797979;
+}
 </style>

@@ -1,127 +1,132 @@
 <template>
-  <div class="layout">
-    <Layout>
-      <Header>
-        <Menu mode="horizontal" theme="dark" active-name="1">
-          <div class="layout-logo">xujunkaiBLOG</div>
-          <div class="layout-nav">
-              <div class="title-item-class" @click="postsHandle()">
-                <Icon type="ios-navigate"></Icon>文章
-              </div>
-              <div class="title-item-class" @click="postCreateHandle()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12" style="padding: 0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">Xjk blog</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <!--              <li class="nav-item active">-->
+              <!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+              <!--              </li>-->
+              <li class="nav-item">
+                <div class="title-item-class"  @click="postsHandle()">
+                  <Icon type="ios-navigate"></Icon>文章
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="title-item-class" @click="postCreateHandle()">
                   <Icon type="ios-keypad"></Icon>
                   新建
-              </div>
-              <div v-if="judgeLogin"  @click="showlogin()" class="title-item-class">
+                </div>
+              </li>
+              <li class="nav-item">
+                <div v-if="judgeLogin"  @click="showlogin()" class="title-item-class">
                   <Icon type="ios-analytics"></Icon>
                   用户登陆
-              </div>
+                </div>
+              </li>
+              <!--              <li class="nav-item">-->
+              <!--                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+              <!--              </li>-->
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
           </div>
-          <div class="demo-avatar-badge">
-            <Badge :count=this.count class="bgEdt">
-              <div class="demo-avatar">
-                <Avatar :style="{background: '#f56a00'}">{{ user }}</Avatar>
-              </div>
-            </Badge>
-            <Dropdown  trigger="click" class="bgEdt2">
-              <a href="javascript:void(0)">
-                <Icon type="ios-arrow-down" style="color: darkgrey"></Icon>
-              </a>
-              <DropdownMenu slot="list">
-                <DropdownItem @click.native="loginOut">
-                  <Icon type="ios-backspace" />
-                  退出</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </div>
-        </Menu>
-      </Header>
-      <Layout class="lay-style">
-        <Sider hide-trigger :style="{ background: '#ccced3', minWidth: '20rem'}" class="sider-style">
-          <div :style="{display: 'flex', justifyContent: 'center', alignItems:'center', height: '15rem'}">
-            <Avatar src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599907997423&di=5081e04ad52f0d6d05d8cc51310c7133&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201309%2F26%2F20130926095128_SiPMh.jpeg" :style="{width: '9rem', height: '9rem'}"/>
-          </div>
-          <div :style="{background: '#808695', padding:'40px 28px', color: '#ffffff'}">
-            <div :style="{color: '#FFFFFF', fontSize: '28px'}">好好学习，天天向上</div>
-            <p>python,lua,go,javaScript....</p>
-          </div>
-          <div :style="{lineHeight: '4rem', padding: '2rem 2.5rem 3rem', fontSize: '20px'}">
-            <p><Icon type="ios-eye" />访问人数:
-              <animate-number from="1" :to="vistor" duration="3000" easing="easeOutQuad" fromColor="#44CC00" to-color="#e27559" v-if="showvistor"></animate-number>
-            </p>
-            <p class="btn">
-              <span>关于作者</span>
-              <router-link to="/files">
-                <span>存档</span>
-              </router-link>
-              <span>私信</span>
-            </p>
-          </div>
-          <div :style="{background:'#818694', color: '#ffffff'}">
-            <div :style="{paddingLeft: '30px', color: '#ffffff', fontSize: '24px'}">标签</div>
-          </div>
-          <div :style="{padding:'10px',display: 'flex',justifyContent: 'center',justifyItems: 'center', lineHeight: '2rem'}">
-            <p>
-              <Tag color="green" :style="{cursor: 'pointer'}" @click.native="httpCategoryPostList(0)">全部</Tag>
-              <Tag v-for="item in category_list" :key="item.id" color="green" :style="{cursor: 'pointer'}" @click.native="httpCategoryPostList(item.id)">{{item.name}}</Tag>
-            </p>
-          </div>
-          <div :style="{minHeight: '20rem'}"></div>
-        </Sider>
-        <div :style="{display:'flex', width:'83.2rem', height:'auto'}">
-          <router-view v-if="isRouterAlive" :category_list="category_list" :tagId="tagId" :yearMonth="yearMonth" :currentReadPostId="currentReadPostId">
-          </router-view>
-          <div v-if="!isRouterAlive">hello world</div>
+        </nav>
+      </div>
+    </div>
+    <div class="row" style="height: auto;min-height: 1000px;">
+      <div class="col-lg-2" :style="{background:'#c0c3c8'}">
+        <div :style="{display: 'flex', justifyContent: 'center', alignItems:'center', height: '15rem'}">
+          <Avatar src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599907997423&di=5081e04ad52f0d6d05d8cc51310c7133&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201309%2F26%2F20130926095128_SiPMh.jpeg" :style="{width: '9rem', height: '9rem'}"/>
         </div>
-        <Sider hide-trigger :style="{ background: '#c0c3c8', minWidth: '22rem'}" class="sider-style">
-          <!--日历-->
-          <div class="dateHandle" :style="{width: '23rem'}">
-            <vc-calendar :attributes='calendarDate'></vc-calendar>
-          </div>
-          <div class="dateHandle">
-            <i-col span="20">
-              <Card>
-                <p slot="title">
-                  <Icon type="md-bookmarks"></Icon>
-                  最新更新
-                </p>
-                <a href="#" slot="extra" @click.prevent="changeLimit">
-                  <Icon type="ios-loop-strong"></Icon>
-                  换一批
-                </a>
-                <ul style="list-style-type:none">
-                  <li v-for="item in randomPostList" :key="item.id" class="posts-archives" @click="postDetial(item.id)">
+        <div :style="{background: '#808695', padding:'40px 9px', color: '#ffffff'}">
+          <div :style="{color: '#FFFFFF', fontSize: '14px'}">好好学习，天天向上</div>
+          <p>python,lua,go,javaScript....</p>
+        </div>
+        <div :style="{lineHeight: '4rem', padding: '2rem 0.1rem 3rem', fontSize: '20px'}">
+          <p><Icon type="ios-eye" />访问人数:
+            <animate-number from="1" :to="vistor" duration="3000" easing="easeOutQuad" fromColor="#44CC00" to-color="#e27559" v-if="showvistor"></animate-number>
+          </p>
+          <p>
+            <span>关于作者</span>
+            <router-link to="/files">
+              <span>存档</span>
+            </router-link>
+            <span>私信</span>
+          </p>
+        </div>
+        <div>
+          <div :style="{color: '#40485a', fontSize: '18px'}">标签:</div>
+        </div>
+        <div :style="{padding:'10px',display: 'flex',justifyContent: 'center',justifyItems: 'center', lineHeight: '2rem'}">
+          <p>
+            <Tag color="green" :style="{cursor: 'pointer'}" @click.native="httpCategoryPostList(0)">全部</Tag>
+            <Tag v-for="item in category_list" :key="item.id" color="green" :style="{cursor: 'pointer'}" @click.native="httpCategoryPostList(item.id)">{{item.name}}</Tag>
+          </p>
+        </div>
+        <div :style="{minHeight: '20rem'}"></div>
+      </div>
+      <div class="col-lg-7" style="padding: 0;">
+        <router-view v-if="isRouterAlive" :category_list="category_list" :tagId="tagId" :yearMonth="yearMonth" :currentReadPostId="currentReadPostId">
+        </router-view>
+        <div v-if="!isRouterAlive">hello world</div>
+      </div>
+      <div class="col-lg-3" :style="{background:'#c0c3c8'}">
+        <!--日历-->
+        <div class="dateHandle">
+          <vc-calendar :attributes='calendarDate'></vc-calendar>
+        </div>
+        <div class="dateHandle">
+          <i-col span="20">
+            <Card>
+              <p slot="title">
+                <Icon type="md-bookmarks"></Icon>
+                最新更新
+              </p>
+              <a href="#" slot="extra" @click.prevent="changeLimit">
+                <Icon type="ios-loop-strong"></Icon>
+                换一批
+              </a>
+              <ul style="list-style-type:none">
+                <li v-for="item in randomPostList" :key="item.id" class="posts-archives" @click="postDetial(item.id)">
                     <span>
                     {{ item.title }}<Icon type="ios-calendar-outline" />{{ item.created_at }}
                     </span>
-                  </li>
-                </ul>
-              </Card>
-            </i-col>
-          </div>
-          <div class="dateHandle">
-            <i-col span="20">
-              <Card>
-                <p slot="title">
-                  <Icon type="md-bookmarks"></Icon>
-                  文章档案
-                </p>
-                <ul style="list-style-type:none">
-                  <li v-for="item in MonthPostList" :key="item.ArchiveDate" @click="httpzYMPostsList(item.Year,item.Month)" class="posts-archives">
+                </li>
+              </ul>
+            </Card>
+          </i-col>
+        </div>
+        <div class="dateHandle">
+          <i-col span="20">
+            <Card>
+              <p slot="title">
+                <Icon type="md-bookmarks"></Icon>
+                文章档案
+              </p>
+              <ul style="list-style-type:none">
+                <li v-for="item in MonthPostList" :key="item.ArchiveDate" @click="httpzYMPostsList(item.Year,item.Month)" class="posts-archives">
                     <span>
                     {{ item.Year }}年{{item.Month}}月
                     </span>
-                    <span>共计:{{ item.Total }}篇</span>
-                  </li>
-                </ul>
-              </Card>
-            </i-col>
-          </div>
-        </Sider>
-      </Layout>
-      <Footer class="layout-footer-center" :style="{color:'#FFFFFFB3',background:'#515a6e', position:'fixed', bottom:0, width: '100%'}">2020-2099 &copy; xuJKBlog</Footer>
-    </Layout>
-<!--    -->
+                  <span>共计:{{ item.Total }}篇</span>
+                </li>
+              </ul>
+            </Card>
+          </i-col>
+        </div>
+      </div>
+    </div>
+    <div class="row footer">
+      <div class="col-lg-12">2020-2099 &copy; xjk Blog</div>
+    </div>
     <Modal
       v-model="modal1"
       :loading="loading"
@@ -151,7 +156,6 @@
     </Modal>
     <template>
       <Back-top :height="100" :bottom="100">
-
         <div class="top">
           <div>
             <Icon type="ios-arrow-dropup-circle" />
@@ -166,6 +170,8 @@
 </template>
 
 <script>
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min'
 export default {
   name: 'home',
   data () {
@@ -390,101 +396,109 @@ export default {
 </script>
 
 <style scoped>
-  .top{
-    width: 70px;
-    font-size: 10px;
-    padding: 10px;
-    background: #40485a;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-  }
-  .layout{
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    min-height: 49rem;
-  }
-  .layout-logo{
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
-  }
-  .layout-nav{
-    width: 420px;
-    margin: 0 17.6rem;
-    left: 4%;
-    /*margin-right: 20px;*/
-  }
-  .layout-footer-center{
-    text-align: center;
-  }
-  .demo-avatar-badge >>> .ivu-badge-count{
-    top: 11px;
-    min-width: 10px;
-    height: 13px;
-    line-height: 10px;
-    right: 4px;
-  }
-  .demo-avatar-badge >>> .bgEdt {
-    left: 95%;
-    position: absolute;
-    padding: 3px;
-  }
-  .demo-avatar-badge >>> .bgEdt2 {
-    left: 98%;
-    position: absolute;
-    padding: 3px;
-  }
-  .col-6-style {
-    background-color: aqua;
-    height: 50rem;
-    top: 64px;
-  }
-  .ivu-layout >>> .ivu-layout-sider {
-    width: 21rem;
-  }
+.top{
+  width: 70px;
+  font-size: 10px;
+  padding: 10px;
+  background: #40485a;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+}
+.layout{
+  border: 1px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 49rem;
+}
+.layout-logo{
+  width: 100px;
+  height: 30px;
+  background: #5b6270;
+  border-radius: 3px;
+  float: left;
+  position: relative;
+  top: 15px;
+  left: 20px;
+}
+.layout-nav{
+  width: 420px;
+  margin: 0 17.6rem;
+  left: 4%;
+  /*margin-right: 20px;*/
+}
+.layout-footer-center{
+  text-align: center;
+}
+.demo-avatar-badge >>> .ivu-badge-count{
+  top: 11px;
+  min-width: 10px;
+  height: 13px;
+  line-height: 10px;
+  right: 4px;
+}
+.demo-avatar-badge >>> .bgEdt {
+  left: 95%;
+  position: absolute;
+  padding: 3px;
+}
+.demo-avatar-badge >>> .bgEdt2 {
+  left: 98%;
+  position: absolute;
+  padding: 3px;
+}
+.col-6-style {
+  background-color: white;
+  height: 50rem;
+  top: 64px;
+}
+.ivu-layout >>> .ivu-layout-sider {
+  width: 21rem;
+}
 
-  .dateHandle {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 0;
-  }
-  .btn span {
-    border-right: #dad9d5 1px solid;
-    padding: 0 10px;
-  }
-  .title-item-class{
-    float: left;
-    margin-left: 3rem;
-    color: #c0c3c8;
-    margin-top: 0.5rem;
-  }
-  .title-item-class:hover{
-    color: white;
-    cursor: pointer;
-  }
-  .posts-archives {
-    cursor: pointer;
-  }
-  .posts-archives:hover{
-    color: #c0c3c8;
-    display: -webkit-box;
-    /* -webkit-box-orient: vertical; */
-    /*! autoprefixer: off */
-    -webkit-box-orient: vertical;
-    /* autoprefixer: on */
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-  }
-  .breadHandle:hover {
-    color: white;
-  }
+.dateHandle {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.btn span {
+  border-right: #dad9d5 1px solid;
+  padding: 0 10px;
+}
+.title-item-class{
+  float: left;
+  margin-left: 3rem;
+  color: #c0c3c8;
+  margin-top: 0.5rem;
+}
+.title-item-class:hover{
+  color: white;
+  cursor: pointer;
+}
+.posts-archives {
+  cursor: pointer;
+}
+.posts-archives:hover{
+  color: #c0c3c8;
+  display: -webkit-box;
+  /* -webkit-box-orient: vertical; */
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.breadHandle:hover {
+  color: white;
+}
+.footer{
+  min-height: 4rem;
+  background: #272c31;
+  color: #b3b6bb;
+  text-align: center;
+  line-height: 4rem;
+  font-size: 18px;
+}
 </style>
